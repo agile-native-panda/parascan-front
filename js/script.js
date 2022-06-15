@@ -4,3 +4,8 @@
 function post() {
     $("body").text("Hello World!");
 }
+
+function finput(input) {
+    console.log(input);
+    console.log(input.files[0]);
+}
