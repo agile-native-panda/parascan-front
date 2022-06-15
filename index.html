@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta property='og:type' content='website'>
+        <meta property='og:title' content="パラスキャン">
+        <!-- <meta property='og:url' content=''> -->
+        <meta property='og:description' content='本を電子世界に移しましょう！'>
+        <meta property="og:image" content="img/ogp.png"> <!--これはSNSなどにシェアするときのサムネイル-->
+        <meta name="description" content="本を電子世界に移しましょう！" />
+        <title>パラスキャン</title>
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="shortcut icon" href="img/favicon.ico" />
+        <!-- <link rel="canonical" href="" /> -->
+      </head>
+    <body>
+        <div>
+            <form method="POST" action="/generate" enctype="multipart/form-data">
+                <label>
+                    ファイルを選択
+                    <input id="finput" class="btn btn-solid" type="file" name="file">
+                </label>
+                
+                <label>
+                    生成する
+                    <input class="btn btn-solid" type="submit">
+                </label>
+                <p id="foutput">選択されていません</p>
+            </form>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type='text/javascript' src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>
