@@ -5,9 +5,9 @@ function post() {
     $("body").text("Hello World!");
 }
 
-function finput(input) {
+async function finput(input) {
     console.log(input);
-    const encodedFile = base64Encode(input.files[0]);
+    const encodedFile = await base64Encode(input.files[0]);
     console.log(encodedFile);
 }
 
