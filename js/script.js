@@ -11,7 +11,7 @@ function finput(input) {
     console.log(encodedFile);
 }
 
-function base64Encode(...parts) {
+async function base64Encode(...parts) {
     return new Promise(resolve => {
         const reader = new FileReader();
         reader.onload = () => {
