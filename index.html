@@ -14,13 +14,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="shortcut icon" href="img/favicon.ico" />
         <!-- <link rel="canonical" href="" /> -->
-      </head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type='text/javascript' src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </head>
     <body>
         <div>
             <input id="finput" class="btn btn-solid" type="file" name="file">
             <button id="post" onclick="post()">送信</button>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script type='text/javascript' src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>
