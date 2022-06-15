@@ -7,11 +7,11 @@ function post() {
 
 function finput(input) {
     console.log(input);
-    const encodedFile = await base64Encode(input.files[0]);
+    const encodedFile = base64Encode(input.files[0]);
     console.log(encodedFile);
 }
 
-async function base64Encode(...parts) {
+function base64Encode(...parts) {
     return new Promise(resolve => {
         const reader = new FileReader();
         reader.onload = () => {
