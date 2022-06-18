@@ -19,8 +19,12 @@
     </head>
     <body>
         <div>
-            <input id="finput" class="btn btn-solid" type="file" name="file" onchange="finput(this)">
-            <button id="post" onclick="post()">送信</button>
+            <form action="https://cacf-240b-10-84e1-f800-5c94-b7e8-4b59-a7.jp.ngrok.io/api/upload/" 
+                    enctype="multipart/form-data"
+                    method="POST">
+                <input type="file" name="file"/>
+                <input type="submit" value="送信"/>
+            </form>
         </div>
     </body>
 </html>
