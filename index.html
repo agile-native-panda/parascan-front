@@ -12,24 +12,27 @@
         <title>パラスキャン</title>
         <link href="./css/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="shortcut icon" href="img/favicon.ico" />
+        <link rel="shortcut icon" href="images/awagh.png" />
         <!-- <link rel="canonical" href="" /> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type='text/javascript' src="./js/script.js"></script>
     </head>
     <body>
         <header>
+            <img src="./images/awagh.png">
             <h1>パラスキャン</h1>
-            <P>本をパラパラめくる動画をテキストに変換できます。<br>動画を撮ってアップロードしてみましょう。</P>
         </header>
-        <div>
-            <form action="https://cacf-240b-10-84e1-f800-5c94-b7e8-4b59-a7.jp.ngrok.io/api/upload/" 
-                    enctype="multipart/form-data"
-                    method="POST"
-                    id = "upload">
-                <input type="file" name="video">
-                <button id="submit-button" type="button" onclick="post()">送信</button>
-            </form>
-        </div>
+        <main>
+            <P>本をパラパラめくる動画をテキストに変換できます。<br>動画を撮ってアップロードしてみましょう。</P>
+            <div>
+                <form action="https://cacf-240b-10-84e1-f800-5c94-b7e8-4b59-a7.jp.ngrok.io/api/upload/" 
+                        enctype="multipart/form-data"
+                        method="POST"
+                        id = "upload">
+                    <input type="file" name="video">
+                    <button id="submit-button" type="button" onclick="post()">送信</button>
+                </form>
+            </div>
+        </main>
     </body>
 </html>
