@@ -48,16 +48,6 @@ main {
     background: url("../images/loading.gif") center center no-repeat;
 }
 
-div {
-    border-radius: 1em;
-    padding: 1em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-}
-
 label {
     color: #fff;
     border-top: 4px solid #48ecc4;
