@@ -3,6 +3,8 @@
 
 const form = document.getElementById("upload");
 const submitButton = document.getElementById("submit-button");
+const mask = document.getElementById('mask');
+const modal = document.getElementById('modal');
 
 
 // function post() {
@@ -25,57 +27,69 @@ const submitButton = document.getElementById("submit-button");
 
 // }
 
+submitButton.addEventListener('click', () => {
+  mask.classList.remove('hidden');
+  modal.classList.remove('hidden');
+});
+
+// $('#upload').bind('ajax:complete', function(){
+//   mask.classList.add('hidden');
+//   modal.classList.add('hidden');
+// });
+
 $(function () {
-    // const formData = new FormData(document.getElementById("upload"));
-    // const action = upload.getAttribute("action");
-    // console.log(action);
+  // const formData = new FormData(document.getElementById("upload"));
+  // const action = upload.getAttribute("action");
+  // console.log(action);
 
-    $("#submit-button").on("click", function() {
+  $("#submit-button").on("click", function() {
 
-      let $upfile = $('input[name="video"]');
-      console.log(JSON.stringify($('input[name="video"]')));
-      console.log(JSON.stringify($upfile.files));
-      let formData = new FormData();
-      console.log($upfile.prop('files')[0]);
-      var file = $('input')[0].files[0];
-      formData.append("video", file);
-      console.log(formData);
-      for (var [key, value] of formData.entries()) { 
-        console.log(key, value);
-      }
-   
-      // 処理前に Loading 画像を表示
-      dispLoading("処理中...");
-   
-      // 非同期処理
-      $.ajax({
-        url : "https://cacf-240b-10-84e1-f800-5c94-b7e8-4b59-a7.jp.ngrok.io/api/upload/",
-        type:"post",
-        data: formData,
-        processData: false,
-        contentType: false,
-        cache: false,
-        xhrFields: {
-          responseType: "blob"
-        },
-      })
-      // 通信成功時
-      /*
-      .done( function(data) {
-        console.log("成功しました");
-      })
-      // 通信失敗時
-      .fail( function(data) {
-        console.log("失敗しました");
-      })
-      */
-      // 処理終了時
-      .always( function(data) {
-        // Lading 画像を消す
-        removeLoading();
-      });
+    let $upfile = $('input[name="video"]');
+    console.log(JSON.stringify($('input[name="video"]')));
+    console.log(JSON.stringify($upfile.files));
+    let formData = new FormData();
+    console.log($upfile.prop('files')[0]);
+    var file = $('input')[0].files[0];
+    formData.append("video", file);
+    console.log(formData);
+    for (var [key, value] of formData.entries()) { 
+      console.log(key, value);
+    }
+ 
+    // 処理前に Loading 画像を表示
+    // dispLoading("処理中...");
+ 
+    // 非同期処理
+    $.ajax({
+      url : "https://parascan-37-env.eba-mxpwcnpx.ap-northeast-1.elasticbeanstalk.com/api/upload/",
+      type:"post",
+      data: formData,
+      processData: false,
+      contentType: false,
+      cache: false,
+      xhrFields: {
+        responseType: "blob"
+      },
+    })
+    // 通信成功時
+    /*
+    .done( function(data) {
+      console.log("成功しました");
+    })
+    // 通信失敗時
+    .fail( function(data) {
+      console.log("失敗しました");
+    })
+    */
+    // 処理終了時
+    .always( function(data) {
+      // Lading 画像を消す
+      // removeLoading();
+      mask.classList.add('hidden');
+      modal.classList.add('hidden');
     });
   });
+});
 
 /* ------------------------------
 Loading イメージ表示関数

@@ -15,7 +15,6 @@
         <link rel="shortcut icon" href="images/awagh.png" />
         <!-- <link rel="canonical" href="" /> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <!-- <script type='text/javascript' src="./js/script.js"></script> -->
     </head>
     <body>
         <header>
@@ -25,21 +24,27 @@
         <main>
             <P>本をパラパラめくる動画をテキストに変換できます。<br>動画を撮ってアップロードしてみましょう。</P>
             <div>
-                 <form action="https://parascan-37-env.eba-mxpwcnpx.ap-northeast-1.elasticbeanstalk.com/api/upload/" 
+                <form action="https://parascan-37-env.eba-mxpwcnpx.ap-northeast-1.elasticbeanstalk.com/api/upload/" 
                         enctype="multipart/form-data"
                         method="POST"
                         id = "upload"> 
-                    <label>
-                        動画を選択
-                        <input type="file" name="video">
+                        <label>
+                            動画を選択
+                            <input type="file" name="video">
                     </label>
                     <label>
                         変換する
-                        <input type="submit" value="送信">
+                        <input type="submit" id="submit-button" value="送信">
                     </label>
                     <!-- <button id="submit-button" type="button" >送信</button> -->
                 </form>
             </div>
+            <div id="mask" class="hidden"></div>
+            <div id="modal" class="hidden loader">Loading...</div>
+            <!-- <section id="modal" class="hidden">
+                <p>変換中</p>
+            </section> -->
         </main>
+        <script type='text/javascript' src="./js/script.js"></script>
     </body>
 </html>
