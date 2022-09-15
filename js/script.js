@@ -5,6 +5,7 @@ const form = document.getElementById("upload");
 const submitButton = document.getElementById("submit-button");
 const mask = document.getElementById('mask');
 const modal = document.getElementById('modal');
+const progress = document.getElementById('progress');
 
 
 // function post() {
@@ -27,9 +28,14 @@ const modal = document.getElementById('modal');
 
 // }
 
+var interval_id;
 submitButton.addEventListener('click', () => {
-  mask.classList.remove('hidden');
-  modal.classList.remove('hidden');
+    mask.classList.remove('hidden');
+    modal.classList.remove('hidden');
+    progress.classList.remove('hidden');
+    interval_id = setInterval(() => {
+        progress.value += 0.1;
+    }, 60000/80/10);
 });
 
 // $('#upload').bind('ajax:complete', function(){
@@ -46,7 +52,7 @@ $(function () {
 
     let $upfile = $('input[name="video"]');
     // console.log(JSON.stringify($('input[name="video"]')));
-    console.log(JSON.stringify($upfile.files));
+    // console.log(JSON.stringify($upfile.files));
     let formData = new FormData();
     console.log($upfile.prop('files')[0]);
     var file = $('input')[0].files[0];
@@ -54,6 +60,9 @@ $(function () {
     {
         mask.classList.add('hidden');
         modal.classList.add('hidden');
+        progress.classList.add('hidden');
+        progress.value += 0;
+        clearInterval(interval_id);
         return;
     }
     // var name = "thisisnotthefiletouse.mp4"
@@ -81,37 +90,49 @@ $(function () {
       },
     })
     .done(function (data, status, xhr) {
-        mask.classList.add('hidden');
-        modal.classList.add('hidden');
-    
-        var fileName = "result.txt"
-        var blob = new Blob([data], { type: "application/octetstream" });
- 
-        //Check the Browser type and download the File.
-        var isIE = false || !!document.documentMode;
-        if (isIE) {
-            window.navigator.msSaveBlob(blob, fileName);
-        } else {
-            var url = window.URL || window.webkitURL;
-            link = url.createObjectURL(blob);
-            var a = $("<a />");
-            a.attr("download", fileName);
-            a.attr("href", link);
-            $("body").append(a);
-            a[0].click();
-            $("body").remove(a);
-        }
+        clearInterval(interval_id);
+        var start_value = progress.value;
+        interval_id = setInterval(() => {
+            progress.value += 0.1;
+            if (progress.value == 100) {
+                var fileName = "result.txt"
+                var blob = new Blob([data], { type: "application/octetstream" });
+        
+                //Check the Browser type and download the File.
+                var isIE = false || !!document.documentMode;
+                if (isIE) {
+                    window.navigator.msSaveBlob(blob, fileName);
+                } else {
+                    var url = window.URL || window.webkitURL;
+                    link = url.createObjectURL(blob);
+                    var a = $("<a />");
+                    a.attr("download", fileName);
+                    a.attr("href", link);
+                    $("body").append(a);
+                    a[0].click();
+                    $("body").remove(a);
+                }
+                mask.classList.add('hidden');
+                modal.classList.add('hidden');
+                progress.classList.add('hidden');
+                progress.value = 0;
+                clearInterval(interval_id);
+            }
+        }, 10 / (100 - start_value));
     })
     // 通信成功時
-    /*
-    .done( function(data) {
-      console.log("成功しました");
-    })
+    // .done( function(data) {
+    //   console.log("成功しました");
+    // })
     // 通信失敗時
     .fail( function(data) {
-      console.log("失敗しました");
+        console.log("失敗しました");
+        mask.classList.add('hidden');
+        modal.classList.add('hidden');
+        progress.classList.add('hidden');
+        progress.value = 0;
+        clearInterval(interval_id);
     })
-    */
     // 処理終了時
     // .always( function(data) {
     //   // Lading 画像を消す
@@ -121,6 +142,16 @@ $(function () {
     // });
   });
 });
+
+function sleep(msec) {
+    // jQueryのDeferredを作成します。
+    var objDef = new $.Deferred;
+    setTimeout(function () {
+        // sec秒後に、resolve()を実行して、Promiseを完了します。
+        objDef.resolve(msec);
+    }, msec);
+    return objDef.promise();
+};
 
 /* ------------------------------
 Loading イメージ表示関数
