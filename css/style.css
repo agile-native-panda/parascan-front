@@ -75,6 +75,9 @@ input[type="file"] {
 input[type="submit"] {
     display: none;
 }
+button {
+    display: none;
+}
 
 .hidden {
     display: none;

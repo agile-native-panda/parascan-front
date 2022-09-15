@@ -24,20 +24,20 @@
         <main>
             <P>本をパラパラめくる動画をテキストに変換できます。<br>動画を撮ってアップロードしてみましょう。</P>
             <div>
-                <form action="https://8306-240b-10-84e1-f800-3d1b-3ae6-95de-f512.jp.ngrok.io/api/upload/" 
+                <!-- <form action="https://8306-240b-10-84e1-f800-3d1b-3ae6-95de-f512.jp.ngrok.io/api/upload/" 
                         enctype="multipart/form-data"
                         method="POST"
-                        id = "upload"> 
-                        <label>
-                            動画を選択
-                            <input type="file" name="video">
+                        id = "upload">  -->
+                    <label>
+                        動画を選択
+                        <input type="file" name="video">
                     </label>
                     <label>
                         変換する
-                        <input type="submit" id="submit-button" value="送信">
+                        <!-- <input type="submit" id="submit-button" value="送信"> -->
+                        <button id="submit-button" type="button" ></button>
                     </label>
-                    <!-- <button id="submit-button" type="button" >送信</button> -->
-                </form>
+                <!-- </form> -->
             </div>
             <div id="mask" class="hidden"></div>
             <div id="modal" class="hidden loader">Loading...</div>

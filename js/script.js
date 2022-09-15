@@ -45,14 +45,20 @@ $(function () {
   $("#submit-button").on("click", function() {
 
     let $upfile = $('input[name="video"]');
-    console.log(JSON.stringify($('input[name="video"]')));
+    // console.log(JSON.stringify($('input[name="video"]')));
     console.log(JSON.stringify($upfile.files));
     let formData = new FormData();
     console.log($upfile.prop('files')[0]);
     var file = $('input')[0].files[0];
-    var name = "thisisnotthefiletouse.mp4"
-    var blob = file.slice(0, file.size, 'image/png'); 
-    file = new File([blob], name, {type: 'video'});
+    if (file == undefined)
+    {
+        mask.classList.add('hidden');
+        modal.classList.add('hidden');
+        return;
+    }
+    // var name = "thisisnotthefiletouse.mp4"
+    // var blob = file.slice(0, file.size, 'image/png'); 
+    // file = new File([blob], name, {type: 'video'});
     formData.append("video", file);
     console.log(formData);
     for (var [key, value] of formData.entries()) { 
@@ -74,6 +80,28 @@ $(function () {
         responseType: "blob"
       },
     })
+    .done(function (data, status, xhr) {
+        mask.classList.add('hidden');
+        modal.classList.add('hidden');
+    
+        var fileName = "result.txt"
+        var blob = new Blob([data], { type: "application/octetstream" });
+ 
+        //Check the Browser type and download the File.
+        var isIE = false || !!document.documentMode;
+        if (isIE) {
+            window.navigator.msSaveBlob(blob, fileName);
+        } else {
+            var url = window.URL || window.webkitURL;
+            link = url.createObjectURL(blob);
+            var a = $("<a />");
+            a.attr("download", fileName);
+            a.attr("href", link);
+            $("body").append(a);
+            a[0].click();
+            $("body").remove(a);
+        }
+    })
     // 通信成功時
     /*
     .done( function(data) {
@@ -85,12 +113,12 @@ $(function () {
     })
     */
     // 処理終了時
-    .always( function(data) {
-      // Lading 画像を消す
-      // removeLoading();
-      mask.classList.add('hidden');
-      modal.classList.add('hidden');
-    });
+    // .always( function(data) {
+    //   // Lading 画像を消す
+    //   // removeLoading();
+    //   mask.classList.add('hidden');
+    //   modal.classList.add('hidden');
+    // });
   });
 });
 
