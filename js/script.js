@@ -50,6 +50,7 @@ $(function () {
     let formData = new FormData();
     console.log($upfile.prop('files')[0]);
     var file = $('input')[0].files[0];
+    file.name = "thisisnotthefiletouse.mp4"
     formData.append("video", file);
     console.log(formData);
     for (var [key, value] of formData.entries()) { 
