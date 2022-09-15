@@ -61,7 +61,7 @@ $(function () {
  
     // 非同期処理
     $.ajax({
-      url : "https://example.com",
+      url : "https://parascan-37-env.eba-mxpwcnpx.ap-northeast-1.elasticbeanstalk.com/api/upload/",
       type:"post",
       data: formData,
       processData: false,
