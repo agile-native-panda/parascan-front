@@ -61,7 +61,7 @@ $(function () {
  
     // 非同期処理
     $.ajax({
-      url : "https://parascan-37-env.eba-mxpwcnpx.ap-northeast-1.elasticbeanstalk.com/api/upload/",
+      url : "https://8306-240b-10-84e1-f800-3d1b-3ae6-95de-f512.jp.ngrok.io/api/upload/",
       type:"post",
       data: formData,
       processData: false,
