@@ -7,6 +7,10 @@ const mask = document.getElementById('mask');
 const modal = document.getElementById('modal');
 const progress = document.getElementById('progress');
 
+$('#finput').on('change', function () {
+    var file = $(this).prop('files')[0];
+    $('#foutput').text(file.name + " を選択中");
+});
 
 // function post() {
 //     const formData = new FormData(document.getElementById("upload"));
@@ -61,6 +65,7 @@ $(function () {
         mask.classList.add('hidden');
         modal.classList.add('hidden');
         progress.classList.add('hidden');
+        $('#foutput').text("動画を選択してください");
         progress.value += 0;
         clearInterval(interval_id);
         return;
