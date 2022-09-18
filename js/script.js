@@ -60,9 +60,6 @@ $(function () {
     let formData = new FormData();
     console.log($upfile.prop('files')[0]);
     var file = $('input')[0].files[0];
-    var name = file.name.replaceAll('_', 'ul');
-    var blob = file.slice(0, file.size, 'image/png'); 
-    file = new File([blob], name, {type: 'video'});
     if (file == undefined)
     {
         mask.classList.add('hidden');
@@ -73,6 +70,9 @@ $(function () {
         clearInterval(interval_id);
         return;
     }
+    var name = file.name.replaceAll('_', 'ul');
+    var blob = file.slice(0, file.size, 'image/png'); 
+    file = new File([blob], name, {type: 'video'});
     // var name = "thisisnotthefiletouse.mp4"
     // var blob = file.slice(0, file.size, 'image/png'); 
     // file = new File([blob], name, {type: 'video'});
