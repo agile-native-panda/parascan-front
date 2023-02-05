@@ -1,5 +1,6 @@
 // jquery基本構文
 // $(“セレクタ”).メソッド(“パラメータ[引数]”);
+// for deploy
 
 const form = document.getElementById("upload");
 const submitButton = document.getElementById("submit-button");
