@@ -106,6 +106,11 @@ $(function () {
             if (progress.value == 100) {
                 var fileName = "result.txt"
                 var blob = new Blob([data], { type: "application/octetstream" });
+                const reader = new FileReader();
+                reader.readAsText(blob);
+                reader.addEventListener('loadend', (event) => {
+                    $("#file_text").text(reader.result);
+                });
         
                 //Check the Browser type and download the File.
                 var isIE = false || !!document.documentMode;
