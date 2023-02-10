@@ -88,7 +88,7 @@ $(function () {
  
     // 非同期処理
     $.ajax({
-      url : "https://a2b6-152-117-129-148.jp.ngrok.io/api/upload/",
+      url : "https://5add-240b-10-84e1-f800-a941-93b-8a97-2e8f.jp.ngrok.io/api/upload/",
       type:"post",
       data: formData,
       processData: false,
