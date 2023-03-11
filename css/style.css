@@ -30,7 +30,7 @@ main {
 }
 
 pre {
-	width:400px;
+	width: auto;
 	word-break: break-all;
 	white-space: pre;           /* CSS 2.0 */
 	white-space: pre-wrap;      /* CSS 2.1 */
